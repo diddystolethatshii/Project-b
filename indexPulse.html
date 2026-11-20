@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT B. | Private Relations</title>
+
+<style>
+:root {
+  --bg:#090a10;
+  --card:#131620;
+  --inner:#1b202d;
+  --accent:#b69aff;
+  --text:#f5f3fa;
+  --muted:#999bad;
+  --border:#292e3c;
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Inter,Arial,sans-serif;
+ min-height:100vh;
+}
+
+header{
+ padding:23px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid var(--border);
+}
+
+.logo{
+ font-size:23px;
+ font-weight:900;
+ letter-spacing:3px;
+}
+
+.logo span{color:var(--accent)}
+
+.tag{
+ font-size:10px;
+ letter-spacing:1.5px;
+ color:var(--muted);
+}
+
+main{
+ max-width:650px;
+ margin:45px auto;
+ padding:0 18px;
+}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:30px;
+ box-shadow:0 20px 60px #0006;
+}
+
+.eyebrow{
+ color:var(--accent);
+ font-size:10px;
+ letter-spacing:2px;
+ font-weight:bold;
+ text-transform:uppercase;
+}
+
+h1{
+ font-size:38px;
+ line-height:1.13;
+ margin:18px 0;
+}
+
+h2{
+ font-size:23px;
+ line-height:1.4;
+}
+
+p{
+ color:var(--muted);
+ line-height:1.7;
+ font-size:14px;
+}
+
+.meta{
+ display:flex;
+ gap:18px;
+ flex-wrap:wrap;
+ padding:18px 0;
+ color:var(--muted);
+ font-size:12px;
+}
+
+hr{
+ border:0;
+ border-top:1px solid var(--border);
+ margin:22px 0;
+}
+
+button{
+ font-family:inherit;
+ cursor:pointer;
+}
+
+.primary{
+ background:var(--accent);
+ color:#151020;
+ border:0;
+ border-radius:10px;
+ padding:15px 22px;
+ font-weight:800;
+}
+
+.secondary{
+ background:var(--inner);
+ color:white;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:13px 19px;
+}
+
+.primary:hover{filter:brightness(1.1)}
+
+.progress{
+ height:4px;
+ background:var(--inner);
+ border-radius:10px;
+ margin:24px 0 12px;
+ overflow:hidden;
+}
+
+.bar{
+ height:100%;
+ width:0;
+ background:var(--accent);
+ transition:.3s;
+}
+
+.counter{
+ font-size:11px;
+ color:var(--muted);
+}
+
+.question{
+ font-size:22px;
+ line-height:1.45;
+ margin:25px 0 8px;
+}
+
+.hint{
+ font-size:12px;
+ color:var(--muted);
+ margin-bottom:22px;
+}
+
+.options{
+ display:grid;
+ gap:10px;
+}
+
+.option{
+ padding:15px;
+ background:var(--inner);
+ border:1px solid var(--border);
+ border-radius:10px;
+ display:flex;
+ gap:12px;
+ align-items:center;
+ transition:.2s;
+ font-size:14px;
+}
+
+.option:hover{border-color:var(--accent)}
+
+.option.selected{
+ border-color:var(--accent);
+ background:#b69aff17;
+}
+
+.circle{
+ width:17px;
+ height:17px;
+ border-radius:50%;
+ border:1px solid #777;
+ flex-shrink:0;
+}
+
+.selected .circle{
+ background:var(--accent);
+ border:5px solid #48356d;
+}
+
+.scale{
+ display:flex;
+ gap:8px;
+}
+
+.scale button{
+ flex:1;
+ padding:15px 5px;
+ border-radius:10px;
+ background:var(--inner);
+ border:1px solid var(--border);
+ color:white;
+}
+
+.scale button.selected{
+ background:var(--accent);
+ color:#151020;
+ border-color:var(--accent);
+ font-weight:bold;
+}
+
+.scale-labels{
+ display:flex;
+ justify-content:space-between;
+ color:var(--muted);
+ font-size:10px;
+ margin-top:9px;
+}
+
+textarea{
+ width:100%;
+ min-height:125px;
+ background:var(--inner);
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:15px;
+ color:white;
+ resize:vertical;
+ outline:none;
+ font-family:inherit;
+}
+
+textarea:focus{border-color:var(--accent)}
+
+.controls{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ margin-top:28px;
+}
+
+.controls button:disabled{opacity:.3}
+
+.hidden{display:none!important}
+
+.center{text-align:center}
+
+.stars{
+ font-size:40px;
+ color:var(--accent);
+ margin:20px 0;
+}
+
+footer{
+ text-align:center;
+ padding:30px;
+ color:#656879;
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+@media(max-width:450px){
+ main{margin:25px auto}
+ .card{padding:22px}
+ h1{font-size:33px}
+ .question{font-size:20px}
+ .scale{gap:5px}
+ .scale button{padding:13px 3px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">PROJECT B<span>.</span></div>
+ <div class="tag">PRIVATE RELATIONS DEPARTMENT</div>
+</header>
+
+<main>
+
+<!-- WELCOME -->
+<section id="welcome" class="card">
+
+ <div class="eyebrow">
+  Exclusive evaluation · 2026
+ </div>
+
+ <h1>Bahlee, your experience matters to us.</h1>
+
+ <p>
+ At Project B, we believe every connection should leave
+ a lasting impression. This evaluation has been specially
+ prepared for you to share your experience with
+ Sphiwengesihle.
+ </p>
+
+ <div class="meta">
+  <span>◷ 3–4 minutes</span>
+  <span>☷ 9 questions</span>
+  <span>◉ Confidential</span>
+ </div>
+
+ <hr>
+
+ <p>
+ Your honesty is appreciated, your opinions are valued,
+ and your satisfaction remains our priority.
+ Management is particularly interested in your feedback.
+ </p>
+
+ <button class="primary" onclick="start()">
+  Begin your evaluation →
+ </button>
+
+ <p style="font-size:10px;margin-top:20px">
+  Prepared exclusively for Bahlee.
+  Some projects are more personal than others.
+ </p>
+
+</section>
+
+
+<!-- SURVEY -->
+<section id="survey" class="card hidden">
+
+ <div class="eyebrow" id="category">
+  Experience evaluation
+ </div>
+
+ <div class="progress">
+  <div class="bar" id="bar"></div>
+ </div>
+
+ <div class="counter" id="counter"></div>
+
+ <div class="question" id="question"></div>
+
+ <div class="hint" id="hint"></div>
+
+ <div id="answers" class="options"></div>
+
+ <div class="controls">
+  <button class="secondary" id="back" onclick="previous()">
+   ← Back
+  </button>
+
+  <button class="primary" id="next" onclick="next()">
+   Continue →
+  </button>
+ </div>
+
+</section>
+
+
+<!-- REVIEW -->
+<section id="review" class="card hidden">
+
+ <div class="eyebrow">Final quality assurance</div>
+
+ <h2>Bahlee, let's review your feedback.</h2>
+
+ <p>
+ Please review your responses before submitting
+ your evaluation to management.
+ </p>
+
+ <div id="reviewAnswers"></div>
+
+ <div class="controls">
+
+  <button class="secondary" onclick="edit()">
+   ← Edit
+  </button>
+
+  <button class="primary" onclick="submit()">
+   Submit feedback ✓
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- FINISH -->
+<section id="finish" class="card center hidden">
+
+ <div class="stars">✦</div>
+
+ <div class="eyebrow">
+  Evaluation successfully completed
+ </div>
+
+ <h1 style="font-size:32px">
+  Thank you, Bahlee.
+ </h1>
+
+ <p>
+ Your feedback means more than you know.
+ Sphiwengesihle genuinely appreciates you taking
+ the time to participate.
+ </p>
+
+ <hr>
+
+ <h2>One last thing...</h2>
+
+ <p>
+ We hope this is only the beginning of something
+ worth looking forward to. After all, some connections
+ deserve more than ordinary business hours. :)
+ </p>
+
+ <div style="color:var(--accent);font-size:13px;margin-top:25px">
+ Project B. · Private Relations
+ </div>
+
+</section>
+
+</main>
+
+<footer>
+ PROJECT B. · PRIVATE RELATIONS · CONFIDENTIAL
+</footer>
+
+
+<script>
+
+const questions = [
+
+ {
+  category:"01 · First impressions",
+  q:"Bahlee, how would you rate your experience with Sphiwengesihle so far?",
+  hint:"Management believes first impressions are important. We hope ours was a good one.",
+  options:[
+   "Absolutely impressive",
+   "Better than expected",
+   "Pretty enjoyable",
+   "Still evaluating the experience",
+   "Management has some explaining to do"
+  ]
+ },
+
+ {
+  category:"02 · Communication",
+  q:"How would you rate the conversations we've shared?",
+  hint:"Consider the quality, consistency and those conversations that make time disappear.",
+  options:[
+   "I could talk to him for hours",
+   "Always enjoyable",
+   "Pretty good",
+   "Could use a little more consistency",
+   "I'll need to submit a formal complaint"
+  ]
+ },
+
+ {
+  category:"03 · Customer engagement",
+  q:"How satisfied are you with the attention you receive from our representative?",
+  hint:"Every VIP customer deserves to feel like one.",
+  options:[
+   "I feel like a priority",
+   "More than satisfied",
+   "Can't complain",
+   "Could use a little more attention",
+   "Where is management when you need them?"
+  ]
+ },
+
+ {
+  category:"04 · Conversation assessment",
+  q:"How would you rate the conversations between you and our company representative?",
+  hint:"This assessment is particularly important to management.",
+  options:[
+   "Exceptional",
+   "Definitely something there",
+   "Promising",
+   "Still assessing",
+   "Awaiting further developments"
+  ]
+ },
+
+ {
+  category:"05 · Customer satisfaction",
+  q:"Do our interactions leave you looking forward to the next one?",
+  hint:"We're hoping the answer doesn't require a board meeting.",
+  options:[
+   "Absolutely",
+   "Most of the time",
+   "Sometimes",
+   "Not particularly",
+   "Depends on the day 😂"
+  ]
+ },
+
+ {
+  category:"06 · Performance rating",
+  q:"On a scale of 1–10, how would you rate Sphiwengesihle's overall performance?",
+  hint:"1 = Needs serious improvement. 10 = Management is extremely impressed.",
+  type:"scale"
+ },
+
+ {
+  category:"07 · Future opportunities",
+  q:"Would you be interested in linking up with Sphiwengesihle before the end of the year?",
+  hint:"No pressure. Management simply wishes to understand your position.",
+  options:[
+   "Definitely",
+   "I'd be interested",
+   "Let's see where things go",
+   "Still considering the proposal",
+   "Management should try harder"
+  ]
+ },
+
+ {
+  category:"08 · Customer loyalty",
+  q:"If you had to choose, would you continue doing business with us?",
+  hint:"We'd certainly be happy to have you around.",
+  options:[
+   "Without hesitation",
+   "Of course",
+   "Probably",
+   "I'm still deciding",
+   "I need a better offer"
+  ]
+ },
+
+ {
+  category:"09 · Additional feedback",
+  q:"Any compliments, complaints or special requests you'd like management to know about?",
+  hint:"Your feedback will be received professionally. Mostly.",
+  type:"text"
+ }
+
+];
+
+let index = 0;
+let answers = {};
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzpt6P8Cm3U7k25kOh6AmQAeB0W-lux4feHncyjVXj1Ntabz8p4tv7BR46I_HNPaqrn/exec";
+
+
+function show(id){
+
+ ["welcome","survey","review","finish"].forEach(x=>
+  document.getElementById(x).classList.add("hidden")
+ );
+
+ document.getElementById(id).classList.remove("hidden");
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+
+function start(){
+
+ index = 0;
+ answers = {};
+
+ show("survey");
+ render();
+
+}
+
+
+function render(){
+
+ const q = questions[index];
+
+ document.getElementById("category").textContent = q.category;
+
+ document.getElementById("counter").textContent =
+ "QUESTION " + (index+1) + " OF " + questions.length;
+
+ document.getElementById("bar").style.width =
+ ((index+1)/questions.length*100) + "%";
+
+ document.getElementById("question").textContent = q.q;
+
+ document.getElementById("hint").textContent = q.hint;
+
+ const area = document.getElementById("answers");
+
+ area.innerHTML = "";
+
+
+ if(q.type === "text"){
+
+  const t = document.createElement("textarea");
+
+  t.placeholder = "Your feedback is appreciated...";
+
+  t.value = answers[index] || "";
+
+  t.addEventListener("input",()=>{
+   answers[index] = t.value;
+  });
+
+  area.appendChild(t);
+
+ }
+
+
+ else if(q.type === "scale"){
+
+  const scale = document.createElement("div");
+
+  scale.className = "scale";
+
+  for(let n=1;n<=10;n++){
+
+   const b = document.createElement("button");
+
+   b.type = "button";
+   b.textContent = n;
+
+   if(answers[index] === String(n)){
+    b.classList.add("selected");
+   }
+
+   b.onclick = ()=>{
+
+    answers[index] = String(n);
+    render();
+
+   };
+
+   scale.appendChild(b);
+
+  }
+
+  area.appendChild(scale);
+
+  const labels = document.createElement("div");
+
+  labels.className = "scale-labels";
+
+  labels.innerHTML =
+   "<span>NEEDS IMPROVEMENT</span><span>OUTSTANDING</span>";
+
+  area.appendChild(labels);
+
+ }
+
+
+ else{
+
+  q.options.forEach(opt=>{
+
+   const el = document.createElement("div");
+
+   el.className = "option" +
+    (answers[index] === opt ? " selected" : "");
+
+   const circle = document.createElement("span");
+
+   circle.className = "circle";
+
+   const txt = document.createElement("span");
+
+   txt.textContent = opt;
+
+   el.append(circle,txt);
+
+   el.onclick = ()=>{
+
+    answers[index] = opt;
+    render();
+
+   };
+
+   area.appendChild(el);
+
+  });
+
+ }
+
+
+ document.getElementById("back").disabled = index === 0;
+
+ document.getElementById("next").textContent =
+  index === questions.length-1
+  ? "Review responses →"
+  : "Continue →";
+
+}
+
+
+function next(){
+
+ const val = answers[index];
+
+ if(val === undefined || !String(val).trim()){
+
+  alert("Please provide a response before continuing.");
+
+  return;
+
+ }
+
+ if(index < questions.length-1){
+
+  index++;
+  render();
+
+ }else{
+
+  review();
+
+ }
+
+}
+
+
+function previous(){
+
+ if(index > 0){
+
+  index--;
+  render();
+
+ }
+
+}
+
+
+function review(){
+
+ show("review");
+
+ const area = document.getElementById("reviewAnswers");
+
+ area.innerHTML = "";
+
+ questions.forEach((q,i)=>{
+
+  const item = document.createElement("div");
+
+  item.style.cssText =
+   "padding:14px 0;border-bottom:1px solid var(--border)";
+
+  const title = document.createElement("div");
+
+  title.className = "hint";
+
+  title.textContent = q.q;
+
+  const response = document.createElement("div");
+
+  response.textContent = answers[i];
+
+  response.style.cssText =
+   "font-size:14px;color:var(--accent)";
+
+  item.append(title,response);
+
+  area.appendChild(item);
+
+ });
+
+}
+
+
+function edit(){
+
+ index = 0;
+
+ show("survey");
+
+ render();
+
+}
+
+
+async function submit(){
+
+ const button = document.querySelector("#review .primary");
+
+ button.disabled = true;
+
+ button.textContent = "Submitting...";
+
+ const payload = {
+
+  answers: questions.map((q,i)=>answers[i] || "")
+
+ };
+
+ try{
+
+  await fetch(GOOGLE_SCRIPT_URL,{
+
+   method:"POST",
+
+   mode:"no-cors",
+
+   headers:{
+    "Content-Type":"text/plain;charset=utf-8"
+   },
+
+   body:JSON.stringify(payload)
+
+  });
+
+  show("finish");
+
+ }catch(error){
+
+  console.error("Submission error:",error);
+
+  alert("Unable to submit. Please check your internet connection.");
+
+  button.disabled = false;
+
+  button.textContent = "Submit feedback ✓";
+
+ }
+
+}
+
+</script>
+
+</body>
+</html>
